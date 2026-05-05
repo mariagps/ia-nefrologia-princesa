@@ -445,12 +445,13 @@ body {
   <a href="#apertura"><span class="nav-num">&bull;</span> Apertura</a>
   <a href="#bloque1"><span class="nav-num">1</span> PICO</a>
   <a href="#bloque2"><span class="nav-num">2</span> Regulación</a>
-  <a href="#bloque3"><span class="nav-num">3</span> Undermind + Consensus</a>
-  <a href="#bloque4"><span class="nav-num">4</span> Elicit</a>
+  <a href="#bloque3"><span class="nav-num">3</span> Elna</a>
+  <a href="#bloque4"><span class="nav-num">4</span> Undermind + Consensus</a>
+  <a href="#bloque5"><span class="nav-num">5</span> Elicit</a>
   <span class="nav-sep"></span>
-  <a href="#bloque5"><span class="nav-num">5</span> NotebookLM</a>
-  <a href="#bloque6"><span class="nav-num">6</span> Gamma</a>
-  <a href="#bloque7"><span class="nav-num">7</span> Caso libre</a>
+  <a href="#bloque6"><span class="nav-num">6</span> NotebookLM</a>
+  <a href="#bloque7"><span class="nav-num">7</span> Gamma</a>
+  <a href="#bloque8"><span class="nav-num">8</span> Caso libre</a>
   <div class="topnav-ref">
     <button onclick="openModal('modal-checklist')">Checklist</button>
     <button onclick="openModal('modal-caso')">Caso</button>
@@ -537,19 +538,6 @@ Quiero convertir esta situación clínica en una pregunta de investigación bien
     <h3>OpenEvidence y ChatGPT Health: fuera de Europa</h3>
     <p>OpenEvidence ya no está disponible en Europa por incumplimiento del RGPD (datos en EE.UU., sin garantías legales, inputs clínicos cedidos para entrenamiento). ChatGPT Health tampoco opera en la UE por ahora.</p>
 
-    <h3>La alternativa europea: Elna</h3>
-    <p><strong>Elna</strong> es una startup española (Barcelona) que ofrece respuestas clínicas estructuradas con citas a fuentes verificables. Su diferencial: consulta directamente las <strong>fichas técnicas de CIMA</strong> (AEMPS) además de literatura revisada por pares.</p>
-    <ul>
-      <li><strong>Empresa española</strong>: RGPD aplicable por defecto, datos en la UE</li>
-      <li><strong>Cita CIMA</strong>: fichas técnicas de medicamentos autorizados en España</li>
-      <li><strong>Clasifica calidad</strong> de las fuentes (alta, moderada)</li>
-      <li><strong>Gratuita</strong> (de momento)</li>
-      <li><strong>No es dispositivo médico</strong>: como todas, el profesional asume la responsabilidad</li>
-      <li><strong>Muy nueva</strong> (2026): prometedora, pero en fase temprana</li>
-    </ul>
-
-    <a href="https://app.elna.health" target="_blank" class="tool-link">&nearr; Abrir Elna</a>
-
     <h3>Marco regulatorio</h3>
     <table>
       <tr><th>Norma</th><th>&iquest;Qué regula?</th><th>Consecuencia</th></tr>
@@ -603,10 +591,42 @@ Quiero convertir esta situación clínica en una pregunta de investigación bien
     <p><strong>Regla de oro:</strong> nunca introduzcáis datos de pacientes reales en ninguna herramienta de IA. Usad siempre datos ficticios o directamente la pregunta de investigación.</p>
   </section>
 
-  <!-- BLOQUE 3 -->
+  <!-- BLOQUE 3: ELNA -->
   <section class="block" id="bloque3">
     <div class="block-header">
       <span class="block-num">3</span>
+      <div><span class="block-title">Búsqueda clínica con Elna</span><span class="block-meta"> &middot; 20 min</span></div>
+    </div>
+
+    <p><strong>Elna</strong> es una startup española (Barcelona) que ofrece respuestas clínicas estructuradas con citas a fuentes verificables. Su diferencial: consulta directamente las <strong>fichas técnicas de CIMA</strong> (AEMPS) además de literatura revisada por pares.</p>
+    <ul>
+      <li><strong>Empresa española</strong>: RGPD aplicable por defecto, datos en la UE</li>
+      <li><strong>Cita CIMA</strong>: fichas técnicas de medicamentos autorizados en España</li>
+      <li><strong>Clasifica calidad</strong> de las fuentes (alta, moderada)</li>
+      <li><strong>Gratuita</strong> (de momento)</li>
+      <li><strong>No es dispositivo médico</strong>: como todas, el profesional asume la responsabilidad</li>
+      <li><strong>Muy nueva</strong> (2026): prometedora, pero en fase temprana</li>
+    </ul>
+
+    <a href="https://app.elna.health" target="_blank" class="tool-link">&nearr; Abrir Elna</a>
+
+    <h3>Ejercicio: consultar nuestra pregunta PICO</h3>
+    <div class="prompt-box">¿Existe evidencia que apoye la adición de voclosporina al tratamiento estándar (micofenolato + corticoides) para alcanzar la remisión renal completa en pacientes con nefritis lúpica activa clase III/IV con proteinuria persistente?<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+
+    <h3>Comparar con ChatGPT</h3>
+    <p>Lanzad la misma pregunta en ChatGPT y comparad: &iquest;cita CIMA? &iquest;Clasifica la calidad de las fuentes? &iquest;Da los mismos artículos?</p>
+
+    <h3>Ejercicio: informe para dirección médica</h3>
+    <p>Imaginad que queréis justificar ante la dirección médica de vuestro hospital la incorporación de voclosporina al arsenal terapéutico del servicio de nefrología.</p>
+    <div class="prompt-box">Genera un informe dirigido a la dirección médica de un hospital justificando la incorporación de voclosporina al tratamiento de la nefritis lúpica en el servicio de nefrología. Incluye: resumen de la evidencia clínica (ensayos AURORA 1 y AURA-LV), perfil de seguridad, indicación aprobada por la EMA, impacto en desenlaces renales y coste-efectividad si hay datos disponibles. Tono formal e institucional.<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+
+    <p><strong>Atención:</strong> este informe es un borrador. Revisad los datos, verificad las referencias y adaptadlo a vuestro contexto antes de presentarlo.</p>
+  </section>
+
+  <!-- BLOQUE 4 -->
+  <section class="block" id="bloque4">
+    <div class="block-header">
+      <span class="block-num">4</span>
       <div><span class="block-title">Búsqueda con Undermind y Consensus</span><span class="block-meta"> &middot; 20 min</span></div>
     </div>
 
@@ -634,10 +654,10 @@ Quiero convertir esta situación clínica en una pregunta de investigación bien
     </ul>
   </section>
 
-  <!-- BLOQUE 4 -->
-  <section class="block" id="bloque4">
+  <!-- BLOQUE 5 -->
+  <section class="block" id="bloque5">
     <div class="block-header">
-      <span class="block-num">4</span>
+      <span class="block-num">5</span>
       <div><span class="block-title">Extracción de datos con Elicit</span><span class="block-meta"> &middot; 35 min</span></div>
     </div>
 
@@ -719,10 +739,10 @@ Example:
     <p><em>Si Lancet pide suscripción, buscad el título en <a href="https://pmc.ncbi.nlm.nih.gov" target="_blank">PubMed Central</a> (acceso libre).</em></p>
   </div>
 
-  <!-- BLOQUE 5 -->
-  <section class="block" id="bloque5">
+  <!-- BLOQUE 6 -->
+  <section class="block" id="bloque6">
     <div class="block-header">
-      <span class="block-num">5</span>
+      <span class="block-num">6</span>
       <div><span class="block-title">Síntesis y análisis con NotebookLM</span><span class="block-meta"> &middot; 30 min</span></div>
     </div>
 
@@ -760,10 +780,10 @@ Example:
 
   </section>
 
-  <!-- BLOQUE 6 -->
-  <section class="block" id="bloque6">
+  <!-- BLOQUE 7 -->
+  <section class="block" id="bloque7">
     <div class="block-header">
-      <span class="block-num">6</span>
+      <span class="block-num">7</span>
       <div><span class="block-title">Presentación con Gamma</span><span class="block-meta"> &middot; 25 min</span></div>
     </div>
 
@@ -791,18 +811,19 @@ Example:
     <ol>
       <li><strong>Caso clínico + ChatGPT</strong> &rarr; pregunta de investigación &rarr; PICO</li>
       <li><strong>Regulación</strong> &rarr; qué herramientas podemos usar y cuáles no</li>
-      <li><strong>Undermind + Consensus</strong> &rarr; búsqueda de evidencia</li>
+      <li><strong>Elna</strong> &rarr; búsqueda clínica con fuentes europeas + informe para dirección</li>
+      <li><strong>Undermind + Consensus</strong> &rarr; búsqueda de evidencia en la literatura</li>
       <li><strong>Elicit</strong> &rarr; extracción de datos (columnas = PICO)</li>
       <li><strong>NotebookLM</strong> &rarr; síntesis narrativa con citas</li>
       <li><strong>Gamma</strong> &rarr; presentación visual</li>
     </ol>
-    <p><em>En 3 horas habéis pasado de una paciente que os pregunta en consulta a una presentación lista para una sesión clínica.</em></p>
+    <p><em>En 4 horas habéis pasado de una paciente que os pregunta en consulta a una presentación lista para una sesión clínica.</em></p>
   </section>
 
-  <!-- BLOQUE 7 -->
-  <section class="block" id="bloque7">
+  <!-- BLOQUE 8 -->
+  <section class="block" id="bloque8">
     <div class="block-header">
-      <span class="block-num">7</span>
+      <span class="block-num">8</span>
       <div><span class="block-title">Caso práctico libre</span><span class="block-meta"> &middot; 35 min</span></div>
     </div>
 
