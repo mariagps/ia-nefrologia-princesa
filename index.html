@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<title>IA para nefrología | Taller La Princesa · 7 mayo 2026</title>
+<style>
+:root {
+  --granate: #6B1D3A;
+  --granate-dark: #4A0E25;
+  --dorado: #C49A2A;
+  --dorado-light: #F5E6B8;
+  --cream: #FDF8F0;
+  --warm-gray: #F7F4F0;
+  --text: #2D2A26;
+  --text-light: #6B6560;
+  --white: #FFFFFF;
+  --shadow: 0 2px 16px rgba(107, 29, 58, 0.08);
+  --shadow-hover: 0 6px 24px rgba(107, 29, 58, 0.14);
+  --radius: 10px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--warm-gray);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ===== TOP NAV ===== */
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  background: var(--white);
+  border-bottom: 2px solid var(--dorado);
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.topnav::-webkit-scrollbar { display: none; }
+.topnav a {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.7rem 0.8rem;
+  text-decoration: none;
+  color: var(--text-light);
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.2s;
+}
+.topnav a:hover {
+  color: var(--granate);
+  border-bottom-color: var(--dorado-light);
+}
+.topnav a.active {
+  color: var(--granate);
+  border-bottom-color: var(--granate);
+  font-weight: 600;
+}
+.topnav .nav-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--warm-gray);
+  font-size: 0.65rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.topnav a.active .nav-num {
+  background: var(--granate);
+  color: white;
+}
+.topnav .nav-sep {
+  width: 1px;
+  height: 20px;
+  background: #E5E0DA;
+  flex-shrink: 0;
+}
+.topnav-ref {
+  margin-left: auto;
+  display: flex;
+  gap: 0.4rem;
+  flex-shrink: 0;
+  padding-left: 0.5rem;
+}
+.topnav-ref button {
+  padding: 0.4rem 0.7rem;
+  background: var(--cream);
+  border: 1px solid var(--dorado-light);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--granate);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.topnav-ref button:hover {
+  background: var(--dorado-light);
+  border-color: var(--dorado);
+}
+
+/* ===== HERO ===== */
+.hero {
+  background: linear-gradient(135deg, var(--granate-dark) 0%, var(--granate) 50%, #8B3A5A 100%);
+  color: white;
+  padding: 3rem 2rem 2.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%; right: -20%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(196, 154, 42, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero-tag {
+  display: inline-block;
+  background: rgba(196, 154, 42, 0.25);
+  border: 1px solid rgba(196, 154, 42, 0.4);
+  border-radius: 20px;
+  padding: 0.3rem 1rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 0.8rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero-meta {
+  font-size: 0.85rem;
+  font-weight: 300;
+  opacity: 0.85;
+  line-height: 1.6;
+}
+.hero-meta strong { font-weight: 500; opacity: 1; }
+.hero-meta a { color: var(--dorado-light); text-decoration: underline; text-underline-offset: 2px; }
+
+/* ===== CONTAINER ===== */
+.container {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+/* ===== BLOCKS ===== */
+.block {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  margin-bottom: 1.8rem;
+  scroll-margin-top: 60px;
+  border-top: 3px solid var(--dorado);
+}
+.block-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.2rem;
+}
+.block-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px; height: 34px;
+  border-radius: 8px;
+  background: var(--granate);
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.block-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--granate);
+}
+.block-meta {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  font-weight: 400;
+  margin-left: 0.3rem;
+}
+.block p {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+.block h3 {
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.6rem;
+  color: var(--granate);
+}
+.block h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 1.2rem 0 0.4rem;
+  color: var(--text);
+}
+.block ul, .block ol {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin: 0 0 1rem 1.2rem;
+}
+
+/* ===== PROMPT BOXES ===== */
+.prompt-box {
+  background: var(--cream);
+  border: 1px solid var(--dorado-light);
+  border-left: 4px solid var(--dorado);
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  margin: 1rem 0;
+  position: relative;
+  font-size: 0.84rem;
+  line-height: 1.65;
+  white-space: pre-wrap;
+}
+.prompt-box .copy-btn {
+  position: absolute;
+  top: 0.5rem; right: 0.5rem;
+  background: var(--granate);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.3rem 0.7rem;
+  font-family: inherit;
+  font-size: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.prompt-box .copy-btn:hover { background: var(--granate-dark); }
+.prompt-box .copy-btn.copied { background: var(--dorado); color: var(--text); }
+
+/* ===== TOOL LINK ===== */
+.tool-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  background: var(--granate);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  margin: 0.5rem 0.4rem 0.5rem 0;
+}
+.tool-link:hover { background: var(--granate-dark); transform: translateY(-1px); box-shadow: var(--shadow-hover); }
+
+/* ===== TABLES ===== */
+.block table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.84rem;
+  margin: 1rem 0;
+}
+.block th {
+  background: var(--cream);
+  text-align: left;
+  padding: 0.6rem 0.8rem;
+  font-weight: 600;
+  font-size: 0.8rem;
+  border-bottom: 2px solid var(--dorado);
+  color: var(--granate);
+}
+.block td {
+  padding: 0.55rem 0.8rem;
+  border-bottom: 1px solid #EDE8E3;
+}
+
+/* ===== CASE CARD ===== */
+.case-card {
+  background: linear-gradient(135deg, var(--cream) 0%, var(--dorado-light) 100%);
+  border: 1px solid var(--dorado);
+  border-radius: var(--radius);
+  padding: 1.2rem 1.5rem;
+  margin: 1rem 0;
+  font-size: 0.86rem;
+  line-height: 1.7;
+}
+.case-card strong { color: var(--granate-dark); }
+.case-card .patient-question {
+  font-style: italic;
+  margin-top: 0.8rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--dorado);
+  color: var(--granate);
+  font-weight: 500;
+}
+
+/* ===== BREAK BLOCK ===== */
+.break-block {
+  background: linear-gradient(135deg, #FEF9F0 0%, var(--dorado-light) 100%);
+  border: 1px dashed var(--dorado);
+  border-radius: var(--radius);
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.8rem;
+  text-align: center;
+  scroll-margin-top: 60px;
+}
+.break-block h2 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--granate); margin-bottom: 0.5rem; }
+.break-block p { font-size: 0.84rem; color: var(--text-light); }
+
+/* ===== MODALS ===== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(74, 14, 37, 0.5);
+  z-index: 200;
+  justify-content: center;
+  align-items: center;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  padding: 2rem;
+  max-width: 650px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+.modal h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--granate);
+}
+.modal p, .modal li {
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+.modal ul { margin: 0.5rem 0 1rem 1.2rem; }
+.modal-close {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-light);
+  line-height: 1;
+}
+.modal table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.84rem;
+  margin: 1rem 0;
+}
+.modal th {
+  background: var(--cream);
+  text-align: left;
+  padding: 0.6rem 0.8rem;
+  font-weight: 600;
+  border-bottom: 2px solid var(--dorado);
+  color: var(--granate);
+}
+.modal td {
+  padding: 0.55rem 0.8rem;
+  border-bottom: 1px solid #EDE8E3;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid #EDE8E3;
+}
+.footer p {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+.footer a { color: var(--granate); text-decoration: none; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 1.5rem; }
+  .container { padding: 1.2rem 1rem 3rem; }
+  .block { padding: 1.5rem; }
+  .topnav-ref { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <span class="hero-tag">Taller presencial &middot; 4 horas</span>
+  <h1>IA aplicada a la investigación y la práctica clínica en nefrología</h1>
+  <div class="hero-meta">
+    Hospital Universitario de La Princesa &middot; Servicio de Nefrología<br>
+    7 de mayo de 2026<br>
+    <strong><a href="https://www.linkedin.com/in/mariagps/" target="_blank">Maria García-Puente</a></strong> &middot; AlterBiblio
+  </div>
+  <div style="margin-top:1.2rem;">
+    <img src="qr.png" alt="QR para acceder a los materiales" style="width:120px; height:120px; border-radius:8px; border:3px solid rgba(255,255,255,0.3);">
+    <p style="font-size:0.72rem; opacity:0.7; margin-top:0.4rem;">Escanea para acceder desde tu ordenador</p>
+  </div>
+</header>
+
+<!-- ===== TOP NAV ===== -->
+<nav class="topnav">
+  <a href="#apertura"><span class="nav-num">&bull;</span> Apertura</a>
+  <a href="#bloque1"><span class="nav-num">1</span> PICO</a>
+  <a href="#bloque2"><span class="nav-num">2</span> Regulación</a>
+  <a href="#bloque3"><span class="nav-num">3</span> Undermind + Consensus</a>
+  <a href="#bloque4"><span class="nav-num">4</span> Elicit</a>
+  <span class="nav-sep"></span>
+  <a href="#bloque5"><span class="nav-num">5</span> NotebookLM</a>
+  <a href="#bloque6"><span class="nav-num">6</span> Gamma</a>
+  <a href="#bloque7"><span class="nav-num">7</span> Caso libre</a>
+  <div class="topnav-ref">
+    <button onclick="openModal('modal-checklist')">Checklist</button>
+    <button onclick="openModal('modal-caso')">Caso</button>
+    <button onclick="openModal('modal-pico')">PICO</button>
+  </div>
+</nav>
+
+<!-- ===== MAIN ===== -->
+<div class="container">
+
+  <!-- APERTURA -->
+  <section class="block" id="apertura">
+    <div class="block-header">
+      <div><span class="block-title">Antes de empezar: por qué estamos aquí</span><span class="block-meta"> &middot; 10 min</span></div>
+    </div>
+
+    <h3>Un caso legal: Harbeson v. Parke-Davis (1983)</h3>
+    <p>Una mujer epiléptica tomó Dilantin (fenitoína) durante el embarazo. Sus hijos nacieron con malformaciones congénitas. Demandó a los médicos que la atendieron.</p>
+    <p>El Tribunal Supremo de Washington determinó que <strong>ninguno de los médicos hizo una búsqueda bibliográfica</strong>, a pesar de que existía un artículo en <em>The Lancet</em> (1972) que describía los riesgos teratogénicos del fármaco.</p>
+    <p><strong>Conclusión del tribunal:</strong> los médicos tienen el deber legal de consultar la literatura médica disponible.</p>
+    <p style="font-size:0.82rem; color:var(--text-light);">PMID <a href="https://pubmed.ncbi.nlm.nih.gov/3999949/" target="_blank">3999949</a> &middot; PMID <a href="https://pubmed.ncbi.nlm.nih.gov/4010498/" target="_blank">4010498</a> &middot; 98 Wash.2d 460, 656 P.2d 483</p>
+
+    <h3>Vídeo de apertura</h3>
+    <div style="position:relative; width:100%; max-width:360px; margin:0 auto 1.5rem; aspect-ratio:9/16; border-radius:var(--radius); overflow:hidden;">
+      <iframe src="https://www.youtube.com/embed/pZNj5tRFpy8" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <h3>Y entonces, &iquest;qué herramientas podemos usar?</h3>
+    <p>No todas las herramientas de IA para búsqueda clínica cumplen con la regulación europea. Hoy vamos a usar sólo herramientas que sí podéis utilizar en vuestro hospital.</p>
+  </section>
+
+  <!-- BLOQUE 1 -->
+  <section class="block" id="bloque1">
+    <div class="block-header">
+      <span class="block-num">1</span>
+      <div><span class="block-title">De la consulta a la pregunta PICO con ChatGPT</span><span class="block-meta"> &middot; 25 min</span></div>
+    </div>
+
+    <p>Empezamos con un caso clínico real. El objetivo: convertir la duda de un paciente en una pregunta de investigación bien definida y estructurarla en formato PICO, con ayuda de un chatbot.</p>
+
+    <h3>El caso</h3>
+    <div class="case-card">
+      Mujer de 62 años con lupus eritematoso sistémico (LES) diagnosticado hace 10 años y nefritis lúpica clase IV confirmada por biopsia renal hace 3 años. Tratamiento actual: micofenolato mofetilo 1 g/12h, prednisona 7,5 mg/día, hidroxicloroquina 200 mg/12h, enalapril 20 mg/día. Cr 1,4 mg/dL, TFGe 45 ml/min/1,73m&sup2;. Proteinuria persistente (UPCR 1,8 g/g) a pesar de 6 meses de tratamiento de mantenimiento.
+      <div class="patient-question">&laquo;Doctora, llevo meses con el tratamiento y sigo perdiendo proteínas por la orina. &iquest;No hay nada nuevo que funcione mejor?&raquo;</div>
+    </div>
+
+    <h3>Ejercicio: formular la pregunta de investigación con ChatGPT</h3>
+    <p>La pregunta de la paciente es vaga. Necesitamos convertirla en una pregunta de investigación precisa y luego estructurarla en formato PICO. Vamos a usar ChatGPT para que nos guíe en el proceso.</p>
+
+    <a href="https://chatgpt.com" target="_blank" class="tool-link">&nearr; Abrir ChatGPT</a>
+
+    <div class="prompt-box">Soy nefróloga. Tengo una paciente de 62 años con lupus eritematoso sistémico y nefritis lúpica clase IV (biopsia hace 3 años). Lleva 6 meses con micofenolato mofetilo 1 g/12h, prednisona 7,5 mg/día, hidroxicloroquina y enalapril. La creatinina es 1,4 mg/dL (TFGe 45) y la proteinuria persiste (UPCR 1,8 g/g). Me pregunta si hay algo nuevo que funcione mejor para reducir la proteinuria y frenar la progresión.
+
+Quiero convertir esta situación clínica en una pregunta de investigación bien formulada y luego estructurarla en formato PICO. NO me des la respuesta directamente. Hazme preguntas una por una para ayudarme a definir bien cada elemento (qué quiero investigar exactamente, en que población, que intervención, qué comparador y qué desenlaces me interesan). Espera mi respuesta antes de pasar a la siguiente pregunta.<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+
+    <h3>Resultado esperado</h3>
+    <p>Tras el ejercicio con ChatGPT, deberíamos llegar a algo como esto:</p>
+
+    <p><strong>Pregunta de investigación:</strong> <em>&iquest;Es la adición de voclosporina al tratamiento estándar superior al tratamiento estándar sólo para alcanzar la remisión renal completa en pacientes con nefritis lúpica activa clase III/IV?</em></p>
+
+    <table>
+      <thead><tr><th>PICO</th><th>Definición</th></tr></thead>
+      <tbody>
+        <tr><td><strong>P</strong> (Paciente)</td><td>Adultos con nefritis lúpica clase III o IV, con proteinuria persistente a pesar de tratamiento inmunosupresor estándar</td></tr>
+        <tr><td><strong>I</strong> (Intervención)</td><td>Voclosporina añadida al tratamiento estándar (micofenolato + corticoides)</td></tr>
+        <tr><td><strong>C</strong> (Comparador)</td><td>Tratamiento estándar sólo (micofenolato + corticoides + placebo)</td></tr>
+        <tr><td><strong>O</strong> (Outcome)</td><td>Remisión renal completa (UPCR &lt;0,5 g/g, TFGe estable, sin rescate)</td></tr>
+      </tbody>
+    </table>
+
+    <p>Esta pregunta PICO será la base de todas las búsquedas que hagamos en los siguientes bloques.</p>
+  </section>
+
+  <!-- BLOQUE 2 -->
+  <section class="block" id="bloque2">
+    <div class="block-header">
+      <span class="block-num">2</span>
+      <div><span class="block-title">IA clínica y regulación europea: qué podéis usar y qué no</span><span class="block-meta"> &middot; 15 min</span></div>
+    </div>
+
+    <p>&iquest;Quién ha usado OpenEvidence? Ya no está disponible en Europa. La incertidumbre regulatoria les hace inviable operar aquí.</p>
+    <p>Antes de buscar evidencia, necesitamos saber qué herramientas podemos usar legalmente en un hospital europeo. No todas las que conocéis están disponibles.</p>
+
+    <h3>OpenEvidence y ChatGPT Health: fuera de Europa</h3>
+    <p>OpenEvidence ya no está disponible en Europa por incumplimiento del RGPD (datos en EE.UU., sin garantías legales, inputs clínicos cedidos para entrenamiento). ChatGPT Health tampoco opera en la UE por ahora.</p>
+
+    <h3>La alternativa europea: Elna</h3>
+    <p><strong>Elna</strong> es una startup española (Barcelona) que ofrece respuestas clínicas estructuradas con citas a fuentes verificables. Su diferencial: consulta directamente las <strong>fichas técnicas de CIMA</strong> (AEMPS) además de literatura revisada por pares.</p>
+    <ul>
+      <li><strong>Empresa española</strong>: RGPD aplicable por defecto, datos en la UE</li>
+      <li><strong>Cita CIMA</strong>: fichas técnicas de medicamentos autorizados en España</li>
+      <li><strong>Clasifica calidad</strong> de las fuentes (alta, moderada)</li>
+      <li><strong>Gratuita</strong> (de momento)</li>
+      <li><strong>No es dispositivo médico</strong>: como todas, el profesional asume la responsabilidad</li>
+      <li><strong>Muy nueva</strong> (2026): prometedora, pero en fase temprana</li>
+    </ul>
+
+    <a href="https://app.elna.health" target="_blank" class="tool-link">&nearr; Abrir Elna</a>
+
+    <h3>Marco regulatorio</h3>
+    <table>
+      <tr><th>Norma</th><th>&iquest;Qué regula?</th><th>Consecuencia</th></tr>
+      <tr><td><strong>GDPR</strong></td><td>Datos personales y de salud</td><td>Multas hasta 20 M&euro;</td></tr>
+      <tr><td><strong>AI Act</strong></td><td>Sistemas de IA en general</td><td>Prohibición de operar</td></tr>
+      <tr><td><strong>MDR</strong></td><td>Dispositivos médicos</td><td>Responsabilidad profesional</td></tr>
+    </table>
+
+    <h3>La pirámide 6S: dónde se sitúa cada herramienta</h3>
+    <p>Modelo de DiCenso, Bayley &amp; Haynes (2009). A mayor altura, más filtro humano experto y menos trabajo para el clínico.</p>
+
+    <div style="max-width:480px; margin:1.5rem auto; font-size:0.85rem; line-height:1.4;">
+      <div style="background:var(--granate); color:var(--white); text-align:center; padding:0.5rem; border-radius:6px 6px 0 0; width:30%; margin:0 auto;">
+        <strong>Systems</strong><br><span style="font-size:0.75rem;">Decisión clínica integrada en HCE</span>
+      </div>
+      <div style="background:var(--granate); opacity:0.88; color:var(--white); text-align:center; padding:0.5rem; width:44%; margin:0 auto;">
+        <strong>Summaries</strong><br><span style="font-size:0.75rem;">UpToDate · DynaMed · BMJ Best Practice</span>
+      </div>
+      <div style="background:var(--granate); opacity:0.75; color:var(--white); text-align:center; padding:0.5rem; width:58%; margin:0 auto;">
+        <strong>Synopses of syntheses</strong><br><span style="font-size:0.75rem;">ACP Journal Club · DARE</span>
+      </div>
+      <div style="background:var(--granate); opacity:0.62; color:var(--white); text-align:center; padding:0.5rem; width:72%; margin:0 auto;">
+        <strong>Syntheses</strong><br><span style="font-size:0.75rem;">Revisiones sistemáticas Cochrane</span>
+      </div>
+      <div style="background:var(--granate); opacity:0.50; color:var(--white); text-align:center; padding:0.5rem; width:86%; margin:0 auto;">
+        <strong>Synopses of studies</strong><br><span style="font-size:0.75rem;">Evidence-Based Medicine journal</span>
+      </div>
+      <div style="background:var(--granate); opacity:0.38; color:var(--white); text-align:center; padding:0.5rem; border-radius:0 0 6px 6px; width:100%; margin:0 auto;">
+        <strong>Studies</strong><br><span style="font-size:0.75rem;">Estudios originales (ensayos, cohortes, casos)</span>
+      </div>
+      <p style="text-align:center; margin-top:0.8rem; font-size:0.75rem; color:var(--text-light);">DiCenso A, Bayley L, Haynes RB. ACP Journal Club. 2009;151(3):JC3-2.</p>
+    </div>
+
+    <p><strong>&iquest;Dónde operan las herramientas de IA?</strong></p>
+    <ul>
+      <li><strong>ChatGPT / Claude</strong> (sin RAG): mezclan niveles sin criterio &mdash; no están en la pirámide</li>
+      <li><strong>Elicit / Consensus / Undermind</strong>: nivel Studies y Syntheses (buscan, pero no ponderan)</li>
+      <li><strong>Elna</strong>: entre Studies y Syntheses + consulta regulatoria (CIMA)</li>
+      <li><strong>UpToDate / DynaMed</strong>: nivel Summaries (síntesis con equipo editorial que firma)</li>
+    </ul>
+    <p style="font-size:0.85rem;">Hoy vamos a trabajar entre los niveles 1 y 3, y os enseño a subir.</p>
+
+    <h3>Entonces, &iquest;qué sí podemos usar?</h3>
+    <p>Herramientas que <strong>no reciben datos de pacientes</strong> y que funcionan sobre literatura publicada, no sobre datos clínicos. Es lo que vamos a hacer en los siguientes bloques:</p>
+    <ul>
+      <li><strong>Elna</strong>: respuestas clínicas con citas a CIMA y literatura (alternativa europea a OpenEvidence)</li>
+      <li><strong>Undermind / Consensus</strong>: buscan en PubMed y literatura publicada. No reciben datos clínicos</li>
+      <li><strong>Elicit</strong>: extrae datos de artículos publicados</li>
+      <li><strong>NotebookLM</strong>: analiza documentos que tú le subes (artículos, no historiales)</li>
+    </ul>
+    <p><strong>Regla de oro:</strong> nunca introduzcáis datos de pacientes reales en ninguna herramienta de IA. Usad siempre datos ficticios o directamente la pregunta de investigación.</p>
+  </section>
+
+  <!-- BLOQUE 3 -->
+  <section class="block" id="bloque3">
+    <div class="block-header">
+      <span class="block-num">3</span>
+      <div><span class="block-title">Búsqueda con Undermind y Consensus</span><span class="block-meta"> &middot; 20 min</span></div>
+    </div>
+
+    <p>Dos herramientas con enfoques diferentes para buscar evidencia sobre nuestra pregunta PICO.</p>
+
+    <table>
+      <tr><th>Herramienta</th><th>Enfoque</th><th>Mejor para</th></tr>
+      <tr><td><strong>Undermind</strong></td><td>Profundidad. Múltiples rondas de búsqueda, muestra su razonamiento</td><td>Revisión exhaustiva</td></tr>
+      <tr><td><strong>Consensus</strong></td><td>Panorámica. Medidor de consenso entre estudios</td><td>Visión global de la evidencia</td></tr>
+    </table>
+
+    <h3>Ejercicio: dividimos el aula</h3>
+    <p>Mitad izquierda &rarr; Undermind. Mitad derecha &rarr; Consensus. Misma pregunta:</p>
+
+    <a href="https://www.undermind.ai" target="_blank" class="tool-link">&nearr; Abrir Undermind</a>
+    <a href="https://consensus.app" target="_blank" class="tool-link">&nearr; Abrir Consensus</a>
+
+    <div class="prompt-box">Is voclosporin added to standard therapy superior to standard therapy alone for achieving complete renal response in patients with active class III/IV lupus nephritis?<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+
+    <h3>Comparamos resultados</h3>
+    <ul>
+      <li>&iquest;Han salido los mismos artículos en ambas herramientas?</li>
+      <li>&iquest;Cuál os gusta más? &rarr; Depende del uso</li>
+      <li>&iquest;Os fiaríais sólo de una? &rarr; No</li>
+    </ul>
+  </section>
+
+  <!-- BLOQUE 4 -->
+  <section class="block" id="bloque4">
+    <div class="block-header">
+      <span class="block-num">4</span>
+      <div><span class="block-title">Extracción de datos con Elicit</span><span class="block-meta"> &middot; 35 min</span></div>
+    </div>
+
+    <p>Ya tenemos una lista de artículos de tres fuentes. &iquest;Vamos a leer 15 papers enteros? No. Elicit busca artículos por significado semántico y extrae datos automáticamente en columnas personalizables. Es como un becario de investigación que lee los papers y te rellena una tabla.</p>
+
+    <a href="https://elicit.com" target="_blank" class="tool-link">&nearr; Abrir Elicit</a>
+
+    <h3>Búsqueda</h3>
+    <div class="prompt-box">Voclosporin lupus nephritis complete renal response proteinuria<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+
+    <h3>Columnas a configurar</h3>
+    <p>Usamos los elementos de la pregunta PICO del bloque 1 como columnas de extracción. En Elicit, añadid columnas personalizadas. Para cada una, copiad el <strong>nombre</strong> y las <strong>instrucciones</strong>:</p>
+
+    <h4>1. Study design</h4>
+    <div class="prompt-box" style="margin-bottom:1rem">Classify the study design. Answer with one of: RCT, post-hoc analysis of RCT, systematic review, meta-analysis, observational cohort, or other. If it is a post-hoc or subgroup analysis, mention the parent trial name. Example:
+
+- Phase 3 RCT (AURORA 1 trial)<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+
+    <h4>2. Population &amp; renal class</h4>
+    <div class="prompt-box" style="margin-bottom:1rem">Extract the lupus nephritis classification and baseline renal function of participants. Include:
+- ISN/RPS class (III, IV, V, or mixed)
+- Baseline eGFR or creatinine (mean &plusmn; SD)
+- Baseline proteinuria (UPCR, g/g)
+- Whether biopsy was required for enrollment
+
+Example:
+- Class III/IV/V (pure V or mixed III/IV+V)
+- Mean eGFR 75 ml/min/1.73m&sup2;; median UPCR 1.87 g/g
+- Biopsy-confirmed within 2 years of screening<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+
+    <h4>3. Primary renal outcome</h4>
+    <div class="prompt-box" style="margin-bottom:1rem">Extract the primary endpoint exactly as defined by the study. If it is a composite, list all components. Distinguish between complete renal response (CRR) and partial renal response (PRR). Example:
+
+- Complete renal response at week 52: UPCR &le;0.5 mg/mg, eGFR no worse than 20% below baseline, no rescue medication<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+
+    <details style="margin-top:1.5rem; margin-bottom:1rem">
+      <summary style="cursor:pointer; font-weight:600; color:var(--granate)">Más columnas opciónales (Intervention, Comparator, Main result, Follow-up)</summary>
+
+    <h4 style="margin-top:1rem">4. Intervention</h4>
+    <div class="prompt-box" style="margin-bottom:1rem">Extract the pharmacological intervention tested. Include drug name, dose, and whether it was added to a background regimen. Specify the background therapy. Example:
+
+- Voclosporin 23.7 mg BID + mycophenolate mofetil 1 g BID + low-dose steroids (rapid taper)<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+
+    <h4>5. Comparator</h4>
+    <div class="prompt-box" style="margin-bottom:1rem">Describe the comparator group. Specify if it is placebo, standard of care, or active control. Mention the background therapy. Example:
+
+- Placebo + mycophenolate mofetil 1 g BID + low-dose steroids (same taper protocol)<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+
+    <h4>6. Main result</h4>
+    <div class="prompt-box" style="margin-bottom:1rem">Extract the main efficacy result for the primary renal endpoint. Report odds ratio (OR) or relative risk (RR) with 95% confidence interval and p-value. If CRR rates are given as percentages, report both arms. Example:
+
+- CRR at 52 weeks: 40.8% vs 22.5% (OR 2.65; 95% CI 1.64-4.27; p&lt;0.001)<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+
+    <h4>7. Follow-up</h4>
+    <div class="prompt-box" style="margin-bottom:1rem">Extract the follow-up duration. Report the primary assessment timepoint and total study duration. If there is an extension study, mention it. Example:
+
+- Primary endpoint at 52 weeks; extension (AURORA 2) followed patients to 3 years<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+
+    </details>
+
+    <p>La pregunta PICO que definimos al principio no era un ejercicio teórico: sus elementos son exactamente las columnas que necesitamos ahora.</p>
+
+    <h3>Revisar la tabla</h3>
+    <ul>
+      <li>CRR vs PRR: &iquest;el estudio mide lo que necesitamos?</li>
+      <li>Clase histológica: &iquest;incluyen clase V pura o sólo III/IV?</li>
+      <li>Regimen de corticoides: &iquest;misma pauta en ambos brazos?</li>
+    </ul>
+    <p><strong>Elicit extrae, pero el clínico valida.</strong> Exportad la tabla (CSV) antes del descanso. La necesitaréis en NotebookLM.</p>
+  </section>
+
+  <!-- DESCANSO -->
+  <div class="break-block" id="descanso">
+    <h2>Descanso (30 min)</h2>
+    <p>Descargad este PDF durante el descanso. Lo vamos a subir a NotebookLM después.</p>
+    <p>
+      <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)32341-6/fulltext" target="_blank" class="tool-link">&nearr; AURORA 1 (Rovin et al., Lancet 2021)</a>
+    </p>
+    <p><em>Si Lancet pide suscripción, buscad el título en <a href="https://pmc.ncbi.nlm.nih.gov" target="_blank">PubMed Central</a> (acceso libre).</em></p>
+  </div>
+
+  <!-- BLOQUE 5 -->
+  <section class="block" id="bloque5">
+    <div class="block-header">
+      <span class="block-num">5</span>
+      <div><span class="block-title">Síntesis y análisis con NotebookLM</span><span class="block-meta"> &middot; 30 min</span></div>
+    </div>
+
+    <p>NotebookLM es una herramienta de Google que analiza documentos propios. Sólo trabaja con lo que tu le das: no busca en internet, no inventa. Cada respuesta incluye citas numeradas al párrafo original del documento.</p>
+
+    <a href="https://notebooklm.google" target="_blank" class="tool-link">&nearr; Abrir NotebookLM</a>
+
+    <h3>Subir fuentes</h3>
+    <ul>
+      <li>La tabla exportada de Elicit (CSV o Google Doc)</li>
+      <li>El PDF del artículo AURORA 1 (descargado en el descanso)</li>
+    </ul>
+
+    <h3>Pregunta 1: síntesis narrativa</h3>
+    <div class="prompt-box">A partir de los documentos que te he proporcionado, resume en 3-4 párrafos la evidencia disponible sobre voclosporina para alcanzar la remisión renal completa en pacientes con nefritis lúpica activa. Incluye los nombres de los ensayos clínicos principales y sus resultados.<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+
+    <h3>Herramientas Studio de NotebookLM</h3>
+    <ul>
+      <li>Informes</li>
+      <li>Presentación</li>
+      <li>Resumen de audio/vídeo</li>
+    </ul>
+
+    <h3>Pregunta 2: protocolo de intervención (Informe)</h3>
+    <div class="prompt-box">Desarrollar un protocolo detallado dirigido a nefrólogos que describa los criterios de elegibilidad para voclosporina en nefritis lúpica, basándose en la clase histológica (ISN/RPS), la proteinuria (UPCR) y la función renal (TFGe). El documento debe establecer pautas para la dosificación (23,7 mg BID), la monitorización de TFGe durante las primeras semanas y las precauciones en pacientes con TFGe reducida. El tono debe ser riguroso y orientado a la toma de decisiones clínicas basadas en la evidencia de AURORA 1 y AURA-LV.<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+
+    <h3>Pregunta 3: generar presentación</h3>
+    <div class="prompt-box">Genera una presentación de 5-7 diapositivas sobre el ensayo AURORA 1 para una sesión clínica hospitalaria. Incluye: objetivo del estudio, diseño, población, resultados principales, seguridad y conclusiones. Formato claro y conciso.<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+
+    <h3>Pregunta 4: resumen de audio para sesión clínica</h3>
+    <div class="prompt-box">Seleccionar formato Debate y duración corto. Prompt: Genera un resumen en audio sobre el ensayo AURORA 1 orientado a preparar una sesión clínica hospitalaria. Incluye los datos clave: objetivo, diseño del estudio, población, resultados principales (CRR, OR, IC 95%) y conclusiones prácticas para el manejo de la nefritis lúpica. Tono profesional y directo, como si fuera un briefing entre colegas antes de la sesión.<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+
+    <h3>Pregunta 5: resumen de vídeo divulgativo</h3>
+    <div class="prompt-box">Genera un resumen en vídeo sobre la voclosporina y la nefritis lúpica pensado para una sesión divulgativa en un colegio. Explica de forma sencilla qué es el lupus, cómo puede dañar el riñón y por qué es importante este medicamento, usando analogías y lenguaje accesible para un público no médico. Estilo visual: kawaii. Duración: breve.<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+
+  </section>
+
+  <!-- BLOQUE 6 -->
+  <section class="block" id="bloque6">
+    <div class="block-header">
+      <span class="block-num">6</span>
+      <div><span class="block-title">Presentación con Gamma</span><span class="block-meta"> &middot; 25 min</span></div>
+    </div>
+
+    <p>Gamma es un generador de presentaciones con IA: le das texto o un documento y genera diapositivas con diseño. Vamos a darle la misma tarea que a NotebookLM y a comparar.</p>
+
+    <a href="https://gamma.app" target="_blank" class="tool-link">&nearr; Abrir Gamma</a>
+
+    <h3>Ejercicio paso a paso</h3>
+    <ol>
+      <li><strong>Nueva presentación</strong>: selecciona la opción <strong>Pegar texto</strong>.</li>
+      <li><strong>Pega el texto</strong> de la síntesis narrativa que nos devolvió NotebookLM en la Pregunta 1.</li>
+      <li>Selecciona tamaño <strong>Tradicional</strong>.</li>
+      <li>Cuando pregunte <em>&iquest;Qué te gustaría hacer con este contenido?</em>, selecciona: <strong>Genera a partir de notas o un esquema</strong>.</li>
+      <li><strong>Editor de instrucciones</strong>:
+        <ul>
+          <li>Contenido del texto: <strong>Conciso</strong></li>
+          <li>Selecciona el <strong>tono</strong>, el <strong>idioma</strong> y el <strong>estilo visual</strong> que prefieras</li>
+          <li>Fuente de la imagen: <strong>fotos de archivo</strong> o <strong>imágenes de IA</strong></li>
+        </ul>
+      </li>
+      <li>Número de módulos: <strong>5</strong>.</li>
+    </ol>
+
+    <h3>Recapitulación del flujo completo</h3>
+    <ol>
+      <li><strong>Caso clínico + ChatGPT</strong> &rarr; pregunta de investigación &rarr; PICO</li>
+      <li><strong>Regulación</strong> &rarr; qué herramientas podemos usar y cuáles no</li>
+      <li><strong>Undermind + Consensus</strong> &rarr; búsqueda de evidencia</li>
+      <li><strong>Elicit</strong> &rarr; extracción de datos (columnas = PICO)</li>
+      <li><strong>NotebookLM</strong> &rarr; síntesis narrativa con citas</li>
+      <li><strong>Gamma</strong> &rarr; presentación visual</li>
+    </ol>
+    <p><em>En 3 horas habéis pasado de una paciente que os pregunta en consulta a una presentación lista para una sesión clínica.</em></p>
+  </section>
+
+  <!-- BLOQUE 7 -->
+  <section class="block" id="bloque7">
+    <div class="block-header">
+      <span class="block-num">7</span>
+      <div><span class="block-title">Caso práctico libre</span><span class="block-meta"> &middot; 35 min</span></div>
+    </div>
+
+    <p>Ahora os toca a vosotros. Elegid vuestra propia pregunta clínica (algo que tengáis pendiente en el servicio) o una de las propuestas, y recorred el flujo.</p>
+
+    <h3>Caso alternativo 1: Nefropatía IgA y proteinuria</h3>
+    <div class="case-card">
+      Varón de 34 años con nefropatía IgA diagnosticada por biopsia hace 2 años. Tratamiento actual: losartán 100 mg/día, restricción de sal. TFGe 68 ml/min/1,73m&sup2;, UPCR 1,2 g/g persistente. Sin indicación clara de inmunosupresión convencional según su nefrólogo.
+      <div class="patient-question">&laquo;He leído que hay un fármaco nuevo específico para mi enfermedad. &iquest;Podría pedirlo?&raquo;</div>
+    </div>
+    <p><em>&iquest;Qué evidencia hay sobre sparsentan o budesonida de liberación dirigida (Nefecon) para reducir la proteinuria en nefropatía IgA con riesgo de progresión?</em></p>
+
+    <h3>Caso alternativo 2: Trasplante renal y rechazo mediado por anticuerpos</h3>
+    <div class="case-card">
+      Mujer de 45 años, trasplante renal de donante cadáver hace 5 años. Tacrolimus + micofenolato + prednisona. Cr sube de 1,1 a 1,6 en 3 meses. Biopsia: rechazo mediado por anticuerpos crónico activo (c-ABMR), DSA anti-DQ7.
+      <div class="patient-question">&laquo;&iquest;Me van a quitar el riñón? &iquest;No hay nada que hacer?&raquo;</div>
+    </div>
+    <p><em>&iquest;Qué opciones terapéuticas tienen evidencia para el rechazo mediado por anticuerpos crónico activo en trasplante renal?</em></p>
+
+    <h3>Flujo de trabajo</h3>
+    <table>
+      <tr><th>Paso</th><th>Herramienta</th><th>Tiempo</th></tr>
+      <tr><td>Pregunta PICO</td><td>ChatGPT</td><td>5 min</td></tr>
+      <tr><td>Búsqueda</td><td>Undermind / Consensus</td><td>5 min</td></tr>
+      <tr><td>Extracción</td><td>Elicit</td><td>10 min</td></tr>
+      <tr><td>Síntesis</td><td>NotebookLM (si da tiempo)</td><td>5 min</td></tr>
+    </table>
+    <p>No es necesario llegar a Gamma. El objetivo es practicar el flujo.</p>
+  </section>
+
+  <!-- CIERRE -->
+  <section class="block" id="cierre">
+    <div class="block-header">
+      <div><span class="block-title">Debate y cierre</span><span class="block-meta"> &middot; 15 min</span></div>
+    </div>
+
+    <h3>Para la reflexión</h3>
+    <ul>
+      <li>&iquest;Usaríais esto en una sesión clínica real?</li>
+      <li>&iquest;Dónde aporta más valor la IA? &iquest;Dónde es más peligroso fiarse?</li>
+      <li>&iquest;Cuál os ha sorprendido más? &iquest;Cuál vais a usar el lunes?</li>
+      <li>&iquest;Presentaríais algo generado sólo por IA sin revisar?</li>
+    </ul>
+
+    <h3>Mensajes clave</h3>
+    <ul>
+      <li><strong>La IA no sustituye al clínico</strong></li>
+      <li><strong>Cruzar fuentes es obligatorio</strong></li>
+      <li><strong>Verificar siempre los datos numéricos</strong></li>
+      <li><strong>Declarar el uso de IA</strong></li>
+      <li><strong>No subir datos de pacientes reales</strong></li>
+    </ul>
+
+    <h3>Herramientas del taller</h3>
+    <table>
+      <tr><th>Herramienta</th><th>Para qué</th><th>Precio</th></tr>
+      <tr><td><a href="https://chatgpt.com" target="_blank">ChatGPT</a></td><td>Formular pregunta de investigación y PICO</td><td>Freemium</td></tr>
+      <tr><td><a href="https://app.elna.health" target="_blank">Elna</a></td><td>Respuestas clínicas con citas a CIMA y literatura</td><td>Gratuito</td></tr>
+      <tr><td><a href="https://www.undermind.ai" target="_blank">Undermind</a></td><td>Búsqueda profunda en literatura</td><td>Freemium</td></tr>
+      <tr><td><a href="https://consensus.app" target="_blank">Consensus</a></td><td>Grado de consenso en la evidencia</td><td>Freemium</td></tr>
+      <tr><td><a href="https://elicit.com" target="_blank">Elicit</a></td><td>Extracción de datos en tabla</td><td>Freemium</td></tr>
+      <tr><td><a href="https://notebooklm.google" target="_blank">NotebookLM</a></td><td>Síntesis de documentos propios</td><td>Gratuito</td></tr>
+      <tr><td><a href="https://gamma.app" target="_blank">Gamma</a></td><td>Presentaciónes visuales</td><td>Freemium</td></tr>
+    </table>
+
+    <p style="margin-top:1.5rem; text-align:center; font-size:0.84rem;">
+      Las herramientas cambian rápido. El flujo de trabajo<br>
+      <em>(pregunta &rarr; búsqueda &rarr; extracción &rarr; síntesis &rarr; presentación)</em><br>
+      no cambia.
+    </p>
+
+    <p style="text-align:center; margin-top:1rem;">
+      <strong>Contacto:</strong> <a href="mailto:maria@alterbiblio.com">maria@alterbiblio.com</a>
+    </p>
+  </section>
+
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <p>
+    &copy; 2026 AlterBiblio &middot; <a href="https://www.linkedin.com/in/mariagps/" target="_blank">Maria García-Puente</a> &middot; <a href="mailto:maria@alterbiblio.com">maria@alterbiblio.com</a>
+  </p>
+</footer>
+
+<!-- ===== MODALS ===== -->
+
+<!-- Modal: Checklist -->
+<div class="modal-overlay" id="modal-checklist" onclick="closeModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModalById('modal-checklist')">&times;</button>
+    <h2>Checklist de registro</h2>
+    <p>Para aprovechar el taller al máximo, registraos en todas las herramientas <strong>antes de venir</strong>. El registro es gratuito en todas.</p>
+    <table>
+      <tr><th>Herramienta</th><th>URL</th><th>Notas</th></tr>
+      <tr><td>ChatGPT</td><td><a href="https://chatgpt.com" target="_blank">chatgpt.com</a></td><td>O Claude, Gemini, Perplexity</td></tr>
+      <tr><td>Elna</td><td><a href="https://app.elna.health" target="_blank">app.elna.health</a></td><td>Alternativa europea a OpenEvidence</td></tr>
+      <tr><td>Undermind</td><td><a href="https://www.undermind.ai" target="_blank">undermind.ai</a></td><td></td></tr>
+      <tr><td>Consensus</td><td><a href="https://consensus.app" target="_blank">consensus.app</a></td><td></td></tr>
+      <tr><td>Elicit</td><td><a href="https://elicit.com" target="_blank">elicit.com</a></td><td></td></tr>
+      <tr><td>NotebookLM</td><td><a href="https://notebooklm.google" target="_blank">notebooklm.google</a></td><td>Necesita cuenta de Google</td></tr>
+      <tr><td>Gamma</td><td><a href="https://gamma.app" target="_blank">gamma.app</a></td><td></td></tr>
+    </table>
+    <p style="margin-top:1rem;"><strong>Necesitaréis:</strong> ordenador portátil con conexión a internet y cuenta de Google (Gmail).</p>
+  </div>
+</div>
+
+<!-- Modal: Caso clinico -->
+<div class="modal-overlay" id="modal-caso" onclick="closeModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModalById('modal-caso')">&times;</button>
+    <h2>Caso clínico</h2>
+    <div class="case-card">
+      Mujer de 62 años con lupus eritematoso sistémico (LES) diagnosticado hace 10 años y nefritis lúpica clase IV confirmada por biopsia renal hace 3 años. Tratamiento actual: micofenolato mofetilo 1 g/12h, prednisona 7,5 mg/día, hidroxicloroquina 200 mg/12h, enalapril 20 mg/día. Cr 1,4 mg/dL, TFGe 45 ml/min/1,73m&sup2;. Proteinuria persistente (UPCR 1,8 g/g) a pesar de 6 meses de tratamiento de mantenimiento.
+      <div class="patient-question">&laquo;Doctora, llevo meses con el tratamiento y sigo perdiendo proteínas por la orina. &iquest;No hay nada nuevo que funcione mejor?&raquo;</div>
+    </div>
+    <h3 style="margin-top:1rem;">Pregunta de investigación</h3>
+    <p><em>&iquest;Es la adición de voclosporina al tratamiento estándar superior al tratamiento estándar sólo para alcanzar la remisión renal completa en pacientes con nefritis lúpica activa clase III/IV?</em></p>
+  </div>
+</div>
+
+<!-- Modal: PICO -->
+<div class="modal-overlay" id="modal-pico" onclick="closeModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModalById('modal-pico')">&times;</button>
+    <h2>Pregunta PICO</h2>
+    <p><strong>Pregunta de investigación:</strong> <em>&iquest;Es la adición de voclosporina al tratamiento estándar superior al tratamiento estándar sólo para alcanzar la remisión renal completa en pacientes con nefritis lúpica activa clase III/IV?</em></p>
+    <table>
+      <tr><th>Componente</th><th>Elemento</th></tr>
+      <tr><td><strong>P</strong> (Población)</td><td>Adultos con nefritis lúpica clase III o IV, con proteinuria persistente a pesar de tratamiento inmunosupresor estándar</td></tr>
+      <tr><td><strong>I</strong> (Intervención)</td><td>Voclosporina añadida al tratamiento estándar (micofenolato + corticoides)</td></tr>
+      <tr><td><strong>C</strong> (Comparador)</td><td>Tratamiento estándar sólo (micofenolato + corticoides + placebo)</td></tr>
+      <tr><td><strong>O</strong> (Outcome)</td><td>Remisión renal completa (UPCR &lt;0,5 g/g, TFGe estable, sin rescate)</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ===== SCRIPTS ===== -->
+<script>
+// Copy prompt
+function copyPrompt(btn) {
+  const box = btn.parentElement;
+  const text = box.textContent.replace('Copiar', '').replace('Copiado', '').trim();
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copiado';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Copiar';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+
+// Modals
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+}
+function closeModal(event) {
+  event.currentTarget.classList.remove('open');
+}
+function closeModalById(id) {
+  document.getElementById(id).classList.remove('open');
+}
+
+// Active nav on scroll
+const sections = document.querySelectorAll('.block, .break-block');
+const navLinks = document.querySelectorAll('.topnav a[href^="#"]');
+
+function updateActiveNav() {
+  let current = '';
+  sections.forEach(section => {
+    const top = section.getBoundingClientRect().top;
+    if (top < 120) current = section.id;
+  });
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) {
+      link.classList.add('active');
+    }
+  });
+}
+window.addEventListener('scroll', updateActiveNav);
+updateActiveNav();
+
+// Caducidad: 7 julio 2026
+(function() {
+  const expiry = new Date('2026-07-07');
+  if (new Date() > expiry) {
+    document.body.innerHTML = '<div style="max-width:600px;margin:4rem auto;padding:2rem;text-align:center;font-family:Inter,sans-serif;">' +
+      '<h1 style="color:#6B1D3A;font-size:1.5rem;">Contenido no disponible</h1>' +
+      '<p style="margin:1rem 0;color:#6B6560;">Los materiales de este taller ya no están disponibles.</p>' +
+      '<p>Contacto: <a href="mailto:maria@alterbiblio.com" style="color:#6B1D3A;">maria@alterbiblio.com</a></p></div>';
+  }
+})();
+</script>
+
+</body>
+</html>
