@@ -480,7 +480,7 @@ body {
     </div>
 
     <h3>Y entonces, &iquest;qué herramientas podemos usar?</h3>
-    <p>No todas las herramientas de IA para búsqueda clínica cumplen con la regulación europea. Hoy vamos a usar sólo herramientas que sí podéis utilizar en vuestro hospital.</p>
+    <p>En este taller nos centraremos en herramientas disponibles a día de hoy.</p>
   </section>
 
   <!-- BLOQUE 1 -->
@@ -505,7 +505,7 @@ body {
 
     <div class="prompt-box">Soy nefróloga. Tengo una paciente de 62 años con lupus eritematoso sistémico y nefritis lúpica clase IV (biopsia hace 3 años). Lleva 6 meses con micofenolato mofetilo 1 g/12h, prednisona 7,5 mg/día, hidroxicloroquina y enalapril. La creatinina es 1,4 mg/dL (TFGe 45) y la proteinuria persiste (UPCR 1,8 g/g). Me pregunta si hay algo nuevo que funcione mejor para reducir la proteinuria y frenar la progresión.
 
-Quiero convertir esta situación clínica en una pregunta de investigación bien formulada y luego estructurarla en formato PICO. NO me des la respuesta directamente. Hazme preguntas una por una para ayudarme a definir bien cada elemento (qué quiero investigar exactamente, en que población, que intervención, qué comparador y qué desenlaces me interesan). Espera mi respuesta antes de pasar a la siguiente pregunta.<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+Quiero convertir esta situación clínica en una pregunta de investigación bien formulada y luego estructurarla en formato PICO. NO me des la respuesta directamente. Formúlame cuatro preguntas, una por una, para ayudarme a definir bien cada elemento (qué quiero investigar exactamente, en que población, que intervención, qué comparador y qué desenlaces me interesan). Espera mi respuesta antes de pasar a la siguiente pregunta.<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
 
     <h3>Resultado esperado</h3>
     <p>Tras el ejercicio con ChatGPT, deberíamos llegar a algo como esto:</p>
@@ -616,11 +616,11 @@ Quiero convertir esta situación clínica en una pregunta de investigación bien
     <h3>Comparar con ChatGPT</h3>
     <p>Lanzad la misma pregunta en ChatGPT y comparad: &iquest;cita CIMA? &iquest;Clasifica la calidad de las fuentes? &iquest;Da los mismos artículos?</p>
 
-    <h3>Ejercicio: informe para dirección médica</h3>
+    <h3>Ejercicio en Elna: informe para dirección médica</h3>
     <p>Imaginad que queréis justificar ante la dirección médica de vuestro hospital la incorporación de voclosporina al arsenal terapéutico del servicio de nefrología.</p>
     <div class="prompt-box">Genera un informe dirigido a la dirección médica de un hospital justificando la incorporación de voclosporina al tratamiento de la nefritis lúpica en el servicio de nefrología. Incluye: resumen de la evidencia clínica (ensayos AURORA 1 y AURA-LV), perfil de seguridad, indicación aprobada por la EMA, impacto en desenlaces renales y coste-efectividad si hay datos disponibles. Tono formal e institucional.<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
 
-    <p><strong>Atención:</strong> este informe es un borrador. Revisad los datos, verificad las referencias y adaptadlo a vuestro contexto antes de presentarlo.</p>
+    <p><strong>Atención:</strong> este informe es un borrador. Revisad los datos, verificad las referencias y adaptadlo a vuestro contexto antes de presentarlo. Preguntaos: ¿Habla del coste-efectividad del medicamento? ¿Cuánto cuesta la diálisis que evitaría? El comité de farmacia te va a pedir un número de pacientes candidatos: ¿aparece ese dato en el informe? ¿Compara con los otros medicamentos que se estén usando ya en el hospital?</p>
   </section>
 
   <!-- BLOQUE 4 -->
@@ -646,11 +646,16 @@ Quiero convertir esta situación clínica en una pregunta de investigación bien
 
     <div class="prompt-box">Is voclosporin added to standard therapy superior to standard therapy alone for achieving complete renal response in patients with active class III/IV lupus nephritis?<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
 
-    <h3>Comparamos resultados</h3>
+    <h3>Comparamos resultados (debate)</h3>
+    <p>Cada grupo defiende su herramienta. Tenéis que convencer al otro grupo de que la vuestra es mejor para un caso concreto. Podéis apoyaros en estas preguntas si queréis:</p>
     <ul>
       <li>&iquest;Han salido los mismos artículos en ambas herramientas?</li>
-      <li>&iquest;Cuál os gusta más? &rarr; Depende del uso</li>
-      <li>&iquest;Os fiaríais sólo de una? &rarr; No</li>
+      <li>&iquest;Alguna ha encontrado algo que la otra no?</li>
+      <li>&iquest;Cuál os ha resultado más fácil de usar?</li>
+      <li>&iquest;Cuál ha respondido más rápido?</li>
+      <li>&iquest;Son gratuitas? &iquest;Tienen limitaciones de uso?</li>
+      <li>&iquest;En cuál confiaríais más para tomar una decisión clínica? &iquest;Por qué?</li>
+      <li>Decid una característica de vuestra herramienta que debería convencer al otro grupo.</li>
     </ul>
   </section>
 
@@ -661,72 +666,37 @@ Quiero convertir esta situación clínica en una pregunta de investigación bien
       <div><span class="block-title">Extracción de datos con Elicit</span><span class="block-meta"> &middot; 35 min</span></div>
     </div>
 
-    <p>Ya tenemos una lista de artículos de tres fuentes. &iquest;Vamos a leer 15 papers enteros? No. Elicit busca artículos por significado semántico y extrae datos automáticamente en columnas personalizables. Es como un becario de investigación que lee los papers y te rellena una tabla.</p>
+    <p>Vamos a lanzar nuestra pregunta PICO en una herramienta más. Elicit busca artículos por significado semántico y extrae datos automáticamente en columnas personalizables. Es como un becario de investigación que lee los papers y te rellena una tabla.</p>
 
     <a href="https://elicit.com" target="_blank" class="tool-link">&nearr; Abrir Elicit</a>
 
     <h3>Búsqueda</h3>
-    <div class="prompt-box">Voclosporin lupus nephritis complete renal response proteinuria<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+    <div class="prompt-box">Is the addition of voclosporin to standard therapy superior to standard therapy alone for achieving complete renal response in patients with active lupus nephritis class III/IV?<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
 
     <h3>Columnas a configurar</h3>
-    <p>Usamos los elementos de la pregunta PICO del bloque 1 como columnas de extracción. En Elicit, añadid columnas personalizadas. Para cada una, copiad el <strong>nombre</strong> y las <strong>instrucciones</strong>:</p>
+    <p>Elicit sugiere columnas automáticamente, dejadlas. Además, añadid estas dos columnas personalizadas. Para cada una, copiad el <strong>nombre</strong> y las <strong>instrucciones</strong>:</p>
 
-    <h4>1. Study design</h4>
-    <div class="prompt-box" style="margin-bottom:1rem">Classify the study design. Answer with one of: RCT, post-hoc analysis of RCT, systematic review, meta-analysis, observational cohort, or other. If it is a post-hoc or subgroup analysis, mention the parent trial name. Example:
+    <h4>1. Renal replacement therapy</h4>
+    <div class="prompt-box" style="margin-bottom:1rem">Does the study report data on progression to end-stage renal disease (ESRD), dialysis (hemodialysis or peritoneal) or kidney transplant? If yes, extract the rates or number of events for each group. If not reported, answer "Not reported". Example:
 
-- Phase 3 RCT (AURORA 1 trial)<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+- ESRD/dialysis: 0 events in voclosporin group vs. 2 in placebo group over 52 weeks<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
 
-    <h4>2. Population &amp; renal class</h4>
-    <div class="prompt-box" style="margin-bottom:1rem">Extract the lupus nephritis classification and baseline renal function of participants. Include:
-- ISN/RPS class (III, IV, V, or mixed)
-- Baseline eGFR or creatinine (mean &plusmn; SD)
-- Baseline proteinuria (UPCR, g/g)
-- Whether biopsy was required for enrollment
+    <h4>2. Concomitant medications</h4>
+    <div class="prompt-box" style="margin-bottom:1rem">List all medications used by participants during the study (both intervention and control arms), including background therapy, rescue medication and any prohibited drugs. Example:
 
-Example:
-- Class III/IV/V (pure V or mixed III/IV+V)
-- Mean eGFR 75 ml/min/1.73m&sup2;; median UPCR 1.87 g/g
-- Biopsy-confirmed within 2 years of screening<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
-
-    <h4>3. Primary renal outcome</h4>
-    <div class="prompt-box" style="margin-bottom:1rem">Extract the primary endpoint exactly as defined by the study. If it is a composite, list all components. Distinguish between complete renal response (CRR) and partial renal response (PRR). Example:
-
-- Complete renal response at week 52: UPCR &le;0.5 mg/mg, eGFR no worse than 20% below baseline, no rescue medication<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
-
-    <details style="margin-top:1.5rem; margin-bottom:1rem">
-      <summary style="cursor:pointer; font-weight:600; color:var(--granate)">Más columnas opciónales (Intervention, Comparator, Main result, Follow-up)</summary>
-
-    <h4 style="margin-top:1rem">4. Intervention</h4>
-    <div class="prompt-box" style="margin-bottom:1rem">Extract the pharmacological intervention tested. Include drug name, dose, and whether it was added to a background regimen. Specify the background therapy. Example:
-
-- Voclosporin 23.7 mg BID + mycophenolate mofetil 1 g BID + low-dose steroids (rapid taper)<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
-
-    <h4>5. Comparator</h4>
-    <div class="prompt-box" style="margin-bottom:1rem">Describe the comparator group. Specify if it is placebo, standard of care, or active control. Mention the background therapy. Example:
-
-- Placebo + mycophenolate mofetil 1 g BID + low-dose steroids (same taper protocol)<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
-
-    <h4>6. Main result</h4>
-    <div class="prompt-box" style="margin-bottom:1rem">Extract the main efficacy result for the primary renal endpoint. Report odds ratio (OR) or relative risk (RR) with 95% confidence interval and p-value. If CRR rates are given as percentages, report both arms. Example:
-
-- CRR at 52 weeks: 40.8% vs 22.5% (OR 2.65; 95% CI 1.64-4.27; p&lt;0.001)<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
-
-    <h4>7. Follow-up</h4>
-    <div class="prompt-box" style="margin-bottom:1rem">Extract the follow-up duration. Report the primary assessment timepoint and total study duration. If there is an extension study, mention it. Example:
-
-- Primary endpoint at 52 weeks; extension (AURORA 2) followed patients to 3 years<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
-
-    </details>
+- Background: mycophenolate mofetil 1 g BID, prednisone (rapid taper to ≤2.5 mg/day), hydroxychloroquine
+- Prohibited: other calcineurin inhibitors, cyclophosphamide, rituximab
+- Rescue: allowed after week 24 (counted as treatment failure)<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
 
     <p>La pregunta PICO que definimos al principio no era un ejercicio teórico: sus elementos son exactamente las columnas que necesitamos ahora.</p>
 
     <h3>Revisar la tabla</h3>
     <ul>
-      <li>CRR vs PRR: &iquest;el estudio mide lo que necesitamos?</li>
-      <li>Clase histológica: &iquest;incluyen clase V pura o sólo III/IV?</li>
-      <li>Regimen de corticoides: &iquest;misma pauta en ambos brazos?</li>
+      <li>&iquest;Algún estudio reporta progresión a diálisis o trasplante?</li>
+      <li>&iquest;Qué fármacos aparecen como tratamiento de fondo? &iquest;Hay alguno que no esperabais?</li>
+      <li>&iquest;Las columnas automáticas de Elicit coinciden con lo que habríais extraído vosotros?</li>
     </ul>
-    <p><strong>Elicit extrae, pero el clínico valida.</strong> Exportad la tabla (CSV) antes del descanso. La necesitaréis en NotebookLM.</p>
+    <p><strong>Elicit extrae, pero el clínico valida.</strong></p>
   </section>
 
   <!-- DESCANSO -->
@@ -752,7 +722,6 @@ Example:
 
     <h3>Subir fuentes</h3>
     <ul>
-      <li>La tabla exportada de Elicit (CSV o Google Doc)</li>
       <li>Los 3 PDFs descargados en el descanso (AURORA 1, AURA-LV, AURORA 2)</li>
     </ul>
 
@@ -766,8 +735,8 @@ Example:
       <li>Resumen de audio/vídeo</li>
     </ul>
 
-    <h3>Pregunta 2: protocolo de intervención (Informe)</h3>
-    <div class="prompt-box">Desarrollar un protocolo detallado dirigido a nefrólogos que describa los criterios de elegibilidad para voclosporina en nefritis lúpica, basándose en la clase histológica (ISN/RPS), la proteinuria (UPCR) y la función renal (TFGe). El documento debe establecer pautas para la dosificación (23,7 mg BID), la monitorización de TFGe durante las primeras semanas y las precauciones en pacientes con TFGe reducida. El tono debe ser riguroso y orientado a la toma de decisiones clínicas basadas en la evidencia de AURORA 1 y AURA-LV.<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+    <h3>Pregunta 2: informe para dirección médica (Informe)</h3>
+    <div class="prompt-box">Genera un informe dirigido a la dirección médica de un hospital justificando la incorporación de voclosporina al tratamiento de la nefritis lúpica en el servicio de nefrología. Incluye: resumen de la evidencia clínica (ensayos AURORA 1 y AURA-LV), perfil de seguridad, indicación aprobada por la EMA, impacto en desenlaces renales y coste-efectividad si hay datos disponibles. Tono formal e institucional.<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
 
     <h3>Pregunta 3: generar presentación</h3>
     <div class="prompt-box">Genera una presentación de 5-7 diapositivas sobre el ensayo AURORA 1 para una sesión clínica hospitalaria. Incluye: objetivo del estudio, diseño, población, resultados principales, seguridad y conclusiones. Formato claro y conciso.<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
